@@ -26,6 +26,7 @@ while True:
     #Wake up word
     if word:
         print("Next trigger")
+        ps('./sounds/yes')
         work = ww.trigger_detect(keywords)
         #Detect good morning
         if work == 0:

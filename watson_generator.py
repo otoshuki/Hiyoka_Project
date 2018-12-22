@@ -1,6 +1,6 @@
 from watson_developer_cloud import TextToSpeechV1
-from googletrans import Translator as Ts
-import speech_recognition as sr
+from googletrans import Translator
+#import speech_recognition as sr
 import json
 
 print('Libraries Imported')
@@ -11,28 +11,31 @@ text_to_speech = TextToSpeechV1(
 
 print('Username and Password Set-Up')
 
-rec = sr.Recognizer()
-trans = Ts()
+#rec = sr.Recognizer()
+# trans = Translator()
+#
+# def recog():
+# 	try:
+# 		with sr.Microphone() as source:
+# 			rec.adjust_for_ambient_noise(source, duration=0.5)
+# 			print("Say")
+# 			audio = rec.listen(source, timeout = 5.0)
+# 			print('Heard')
+# 			answer = rec.recognize_google(audio)
+# 			rec.operation_timeout = 10
+#
+# 	except:
+# 		answer = 'error'
+# 	return answer
 
-def recog():
-	try:
-		with sr.Microphone() as source:
-			rec.adjust_for_ambient_noise(source, duration=0.5)
-			print("Say")
-			audio = rec.listen(source, timeout = 5.0)
-			print('Heard')
-			answer = rec.recognize_google(audio)
-			rec.operation_timeout = 10
+#find = recog()
+#print(type(find))
+#word = trans.translate("Hello", dest = 'ja')
 
-	except:
-		answer = 'error'
-	return answer
+get = text_to_speech.list_voice_models()
+print(json.dumps(get,indent=2))
 
-find = recog()
-print(type(find))
-word = trans.translate(find, dest = 'ja')
-
-with open('', 'wb') as audio_file:
+with open('yes', 'wb') as audio_file:
     audio_file.write(
         text_to_speech.synthesize(
-            word.text, 'audio/wav', 'ja-JP_EmiVoice').content)
+            'はい', 'audio/wav', 'ja-JP_EmiVoice').content)
