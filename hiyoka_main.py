@@ -3,7 +3,8 @@
 
 #Import libraries
 import os
-import wake_word as ww
+import wake_word
+import watson_generator
 import nltk
 import random
 import numpy as np
@@ -22,12 +23,12 @@ keywords = [gm_trigger,gn_trigger]
 while True:
     #Detect wake wake_word
     print("Main trigger")
-    word = ww.trigger_detect([main_trigger])
+    word = wake_word.trigger_detect([main_trigger])
     #Wake up word
     if word:
         print("Next trigger")
         ps('./sounds/yes')
-        work = ww.trigger_detect(keywords)
+        work = wake_word.trigger_detect(keywords)
         #Detect good morning
         if work == 0:
             print("Good Morning")
@@ -36,7 +37,6 @@ while True:
         elif work == 1:
             print("Good Night")
             ps('./sounds/good_night')
-    #Speak
 
 #Wait for command
 #Speak
@@ -53,6 +53,6 @@ while True:
 
 #Say a story
 
-#Weather forecast
+#Weather
 
 #Scheduling
