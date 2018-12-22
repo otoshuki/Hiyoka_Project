@@ -8,6 +8,7 @@ import nltk
 import random
 import numpy as np
 import time
+from playsound import playsound as ps
 
 #Triggers
 #Main wake word
@@ -23,16 +24,17 @@ while True:
     print("Main trigger")
     word = ww.trigger_detect([main_trigger])
     #Wake up word
-    time.sleep(1)
     if word:
         print("Next trigger")
         work = ww.trigger_detect(keywords)
         #Detect good morning
         if work == 0:
             print("Good Morning")
+            ps('./sounds/good_morning')
         #Detect good night
         elif work == 1:
             print("Good Night")
+            ps('./sounds/good_night')
     #Speak
 
 #Wait for command
