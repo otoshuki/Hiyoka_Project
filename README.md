@@ -8,5 +8,5 @@ Progress-
 
 -Progress Halted-
 
-3. 22-12-18 -- Added to Git - Restarting progress
+3. 22-12-18 -- Added to Git - Restarting progress - Added Wake Word Detection
 
