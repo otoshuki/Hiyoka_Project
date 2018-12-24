@@ -8,10 +8,8 @@ Progress-
 
 -Progress Halted-
 
-3. 22-12-18 -- Added to Git - Restarting progress - Added Wake Word Detection 
+3. 22-12-18 -- Added to Git - Restarting progress - Added Wake Word Detection - Added translation tool
 4. 23-12-18 -- Wake word detection - Baseline construction - Updated generator files
 5. 24-12-18 -- Added exit, startup and sleep modes - Added gtts as backup - Added date function
-||||||| merged common ancestors
-3. 22-12-18 -- Added to Git - Restarting progress - Added Wake Word Detection
 
 
