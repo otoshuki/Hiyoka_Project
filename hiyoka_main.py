@@ -7,6 +7,7 @@ import nltk
 import random
 import numpy as np
 import time
+import datetime
 from playsound import playsound as ps
 
 #Import files
@@ -93,8 +94,9 @@ if __name__ == '__main__':
                 elif input.startswith(exits):
                     exit_hiyoka()
                     break
-                #Date and time
-            
+                #Date
+
+
             #Sleep trigger
             elif word == 1:
                 sleep_hiyoka()

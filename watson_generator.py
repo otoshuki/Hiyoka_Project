@@ -11,6 +11,14 @@ print('Username and Password Set-Up')
 
 rec = sr.Recognizer()
 trans = Translator()
+punct = '''()-[]{}'"\<>/@#$%^&*_~'''
+
+def unpunctuate(text):
+	edit = ""
+	for char in text:
+		if char not in punct:
+			edit = edit + char
+	return edit
 
 #Recognition using Google web service
 def recog():
@@ -37,26 +45,27 @@ def translate(in_word,trans_affirm = False):
         #Translate to Japanese
         translated = trans.translate(in_word, dest = 'ja')
         #Save the file
-        file = './sounds/' + in_word
+        file = './sounds/' + unpunctuate(in_word).replace(' ','_')
         with open(file, 'wb') as audio_file:
             audio_file.write(
                 text_to_speech.synthesize(
                     translated.text, 'audio/wav', 'ja-JP_EmiVoice').content)
+        return file
     #If input in Japanse
     else:
         #Translate to Engish
         translated = trans.translate(in_word, dest = 'en')
         #Save as the translated word
-        file = './sounds/' + translated.text
+        file = './sounds/' + unpunctuate(translated.text).replace(' ','_')
         with open(file, 'wb') as audio_file:
             audio_file.write(
                 text_to_speech.synthesize(
                     in_word, 'audio/wav', 'ja-JP_EmiVoice').content)
-
+        return file
 if __name__ == '__main__':
     #translate(recog())
-    file = './sounds/' + 'ok'
+    file = 'test'
     with open(file, 'wb') as audio_file:
         audio_file.write(
             text_to_speech.synthesize(
-                "了解しました", 'audio/wav', 'ja-JP_EmiVoice').content)
+                "c", 'audio/wav', 'ja-JP_EmiVoice').content)
