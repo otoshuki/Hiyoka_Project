@@ -95,7 +95,12 @@ if __name__ == '__main__':
                     exit_hiyoka()
                     break
                 #Date
-
+                if 'date' in input:
+                    now = datetime.datetime.now()
+                    date = str(now.day)+"/"+str(now.month)+"/"+str(now.year)
+                    print("Date : ",date)
+                    ps(todays_date_is)
+                    ps(watgen.translate(date,True))
 
             #Sleep trigger
             elif word == 1:
