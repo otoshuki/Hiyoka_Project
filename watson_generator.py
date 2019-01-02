@@ -1,8 +1,11 @@
+#Recognition and Translation functions
+#Import libraries
 from watson_developer_cloud import TextToSpeechV1
 from googletrans import Translator
 import speech_recognition as sr
 import json
 
+#Set username and password tts
 text_to_speech = TextToSpeechV1(
     username='d816def2-ebc4-4fec-8845-93362a41fb18',
     password='MdhCKRSjNKkx')
@@ -13,6 +16,7 @@ rec = sr.Recognizer()
 trans = Translator()
 punct = '''()-[]{}'"\<>/@#$%^&*_~'''
 
+#Function to unpunctuate the input text
 def unpunctuate(text):
 	edit = ""
 	for char in text:
@@ -23,14 +27,15 @@ def unpunctuate(text):
 #Recognition using Google web service
 def recog():
 	try:
+        #Get the input
 		with sr.Microphone() as source:
 			rec.adjust_for_ambient_noise(source, duration=0.5)
 			print("Say")
-			audio = rec.listen(source, timeout = 5.0)
+			audio = rec.listen(source, timeout = 3.0)
 			print('Heard')
 			answer = rec.recognize_google(audio)
 			rec.operation_timeout = 10
-
+    #If no input
 	except:
 		answer = 'error'
 	return answer
@@ -62,6 +67,8 @@ def translate(in_word,trans_affirm = False):
                 text_to_speech.synthesize(
                     in_word, 'audio/wav', 'ja-JP_EmiVoice').content)
         return file
+
+#Run standalone file
 if __name__ == '__main__':
     #translate(recog())
     file = 'test'

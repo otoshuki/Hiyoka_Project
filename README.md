@@ -1,7 +1,14 @@
 # Hiyoka Project
-A personal assisstant(Japanese replies) for Room Automation based on Google Web Speech Recognition and Watson TTS.
+A personal assisstant for Room Automation System.
 
-Progress-
+### Features to program-
+Wake word detection, Sleep mode, Shutdown, Date and time, Control switches, Temperature control
+Play music,
+<br>
+Weather, Scheduling, Speaker recognition, Speaker localization, Intelligent replies, Recommendations,
+
+
+### Progress-
 
 1. 28-08-18 -- Added common Japanese sounds using Watson TTS
 2. 29-08-18 -- Added common Japanese sounds using Watson TTS

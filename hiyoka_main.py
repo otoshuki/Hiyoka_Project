@@ -9,6 +9,7 @@ import numpy as np
 import time
 import datetime
 from playsound import playsound as ps
+import serial
 
 #Import files
 import wake_word
@@ -28,10 +29,9 @@ exits = ('exit', 'shut down')
 greets = {"Good Morning":'./sounds/good_morning',"Good Night":'./sounds/good_night'}
 who_are_you = {"I am your friend Hiyoka!":'./sounds/friend_hiyoka',
                 "I am your personal assistant, Hiyoka!":'./sounds/assistant_hiyoka'}
-# #Good morning trigger
-# gm_trigger = './triggers/good_morning_linux.ppn'
-# #Good night trigger
-# gn_trigger = './triggers/good_night_linux.ppn'
+
+#Set up serial port
+#arduino = serial.Serial('/dev/ttyACM0', 115200)
 
 #Functions
 def exit_hiyoka():
@@ -39,6 +39,7 @@ def exit_hiyoka():
     ps('./sounds/yes')
     ps('./sounds/shutting_down_systems')
 
+#Sleep Mode for Hiyoka
 def sleep_hiyoka():
     global sleeping
     reply = list(greets.keys())[1]
@@ -47,6 +48,7 @@ def sleep_hiyoka():
     ps('./sounds/entering_sleep_mode')
     sleeping = 1
 
+#Wake Up Hiyoka
 def wake_hiyoka():
     global sleeping
     ps('./sounds/good_morning')
@@ -99,18 +101,22 @@ if __name__ == '__main__':
                     now = datetime.datetime.now()
                     date = str(now.day)+"/"+str(now.month)+"/"+str(now.year)
                     print("Date : ",date)
-                    ps(todays_date_is)
+                    ps('./sounds/todays_date_is')
                     ps(watgen.translate(date,True))
-
+                #Control lights
+                #Turn Lights1 on and off
+                if ('turn' in input) and ('on' in input) and ('lights' in input):
+                    #arduino.write('1')
+                    print('Lights1 ON')
+                if ('turn' in input) and ('off' in input) and ('lights' in input):
+                    #arduino.write('5')
+                    print('Lights1 OFF')
+                
             #Sleep trigger
             elif word == 1:
                 sleep_hiyoka()
 
-#Perform command
-
 #Play Music
-
-#Control lights
 
 #Control extension cord
 
