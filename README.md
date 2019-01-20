@@ -15,3 +15,4 @@ Porcupine, WatsonTTS, speech_recognition, google_trans, PySerial, nltk, pyAudio
 4. 23-12-18 -- Wake word detection - Baseline construction - Updated generator files
 5. 24-12-18 -- Added exit, startup and sleep modes - Added gtts as backup - Added date function
 6. 02-01-18 -- Added nodeMCU Control to switch lights using PySerial
+7. 20-01-18 -- Added Google_Cloud_Speech
